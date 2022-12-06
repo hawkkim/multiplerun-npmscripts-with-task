@@ -38,17 +38,17 @@ vscode 로 로컬 개발을 할 때,
 5. `/task/package.json` 에 다음 내용 추가
 ```
 "scripts": {
-    "be": "cd ../repo/backend && npm run dev",
-    "fe": "cd ../repo/frontend && npm run dev",
-    "run-all": "npm-run-all --parallel fe be"
-}
+  "back-end": "cd ../maven/maven/be && npm run start:dev",
+  "front-end": "cd ../maven/maven/fe && npm run start:dev",
+  "run-all": "npm-run-all --parallel front-end back-end"
+},
 ```
   - 위 스크립트의 의미
-    - be는 `../repo/backend` 로 이동하여 `dev-be` 라는 npm script 를 실행 합니다
-    - fe는 `../repo/frontend` 로 이동하여 `dev-fe` 라는 npm script 를 실행 합니다
-    - run-all 은 위에 정의한 `fe` 와 `be`를 동시에 실행시킵니다
+    - back-end는 `../repo/backend` 로 이동하여 `dev-be` 라는 npm script 를 실행 합니다
+    - front-end는 `../repo/frontend` 로 이동하여 `dev-fe` 라는 npm script 를 실행 합니다
+    - run-all 은 위에 정의한 `back-end` 와 `front-end`를 동시에 실행시킵니다
 
-6. `run-all` 을 실행시켜보면 frontend 와 backend 가 동시에 돌아감을 확인할 수 있음
+6. `run-all` 을 실행시켜보면 front-end 와 back-end 가 동시에 돌아감을 확인할 수 있음
 7. `/task/.vscode/tasks.json` 을 생성
 8. 다음 내용으로 작성하여 이 workspace 의 기본 빌드 설정을 `npm run run-all` 로 지정함
 ```
@@ -56,9 +56,9 @@ vscode 로 로컬 개발을 할 때,
   "tasks": [
     {
       "type": "npm",
-      "script": "local",
+      "script": "run-all",
       "problemMatcher": [],
-      "label": "npm: local",
+      "label": "npm: run-all",
       "detail": "npm-run-all --parallel front-end back-end",
       "group": {
         "kind": "build",
