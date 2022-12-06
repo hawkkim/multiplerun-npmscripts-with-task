@@ -2,11 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "run-all",
-      "problemMatcher": [],
+      "type": "shell",
       "label": "npm: run-all",
-      "detail": "npm-run-all --parallel fe be",
+      "command": "npm run run-all",
       "group": {
         "kind": "build",
         "isDefault": true

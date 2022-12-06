@@ -1,8 +1,8 @@
 {
   "name": "tasks",
   "scripts": {
-    "be": "cd ../repo/backend && npm run dev",
-    "fe": "cd ../repo/frontend && npm run dev",
+    "be": "cd ../repos/backend && npm run dev-be",
+    "fe": "cd ../repos/frontend && npm run dev-fe",
     "run-all": "npm-run-all --parallel fe be"
   },
   "author": "",
