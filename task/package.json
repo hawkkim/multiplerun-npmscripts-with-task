@@ -1,0 +1,13 @@
+{
+  "name": "tasks",
+  "scripts": {
+    "be": "cd ../repo/backend && npm run dev",
+    "fe": "cd ../repo/frontend && npm run dev",
+    "run-all": "npm-run-all --parallel fe be"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
