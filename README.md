@@ -32,9 +32,10 @@ vscode 로 로컬 개발을 할 때,
 /task                        # 지금 설명 절차에 의해 만드는 디렉토리, 단축키로 구동하는 설정을 여기에 넣는 개인화 디렉토리 입니다.
 ```
 
-2. `/task` 디렉토리에서 `npm init`
-3. `/task` 디렉토리에서 `npm install --save-dev npm-run-all`
-4. `/task/package.json` 에 다음 내용 추가
+2. vscode 에서 디렉토리들을 `workspace` 형태로 열어놓고 관련 디렉토리를 추가해 준다. 샘플코드에서는 `/multiple_npmscripts_run.code-workspace` 파일을 열면 됨
+3. `/task` 디렉토리에서 `npm init`
+4. `/task` 디렉토리에서 `npm install --save-dev npm-run-all`
+5. `/task/package.json` 에 다음 내용 추가
 ```
 "scripts": {
     "be": "cd ../repo/backend && npm run dev",
@@ -47,17 +48,18 @@ vscode 로 로컬 개발을 할 때,
     - fe는 `../repo/frontend` 로 이동하여 `dev-fe` 라는 npm script 를 실행 합니다
     - run-all 은 위에 정의한 `fe` 와 `be`를 동시에 실행시킵니다
 
-5. `run-all` 을 실행시켜보면 frontend 와 backend 가 동시에 돌아감을 확인할 수 있음
-6. `/task/.vscode/tasks.json` 을 생성
-7. 다음 내용으로 작성하여 이 workspace 의 기본 빌드 설정을 `npm run run-all` 로 지정함
+6. `run-all` 을 실행시켜보면 frontend 와 backend 가 동시에 돌아감을 확인할 수 있음
+7. `/task/.vscode/tasks.json` 을 생성
+8. 다음 내용으로 작성하여 이 workspace 의 기본 빌드 설정을 `npm run run-all` 로 지정함
 ```
 {
-  "version": "2.0.0",
   "tasks": [
     {
-      "type": "shell",
-      "label": "npm: run-all",
-      "command": "npm run run-all",
+      "type": "npm",
+      "script": "local",
+      "problemMatcher": [],
+      "label": "npm: local",
+      "detail": "npm-run-all --parallel front-end back-end",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -66,6 +68,6 @@ vscode 로 로컬 개발을 할 때,
   ]
 }
 ```
-8. `cmd + shift + b` (빌드 단축키) 를 눌러서 2개의 npm script 가 잘 돌아가는지 확인
+9. `cmd + shift + b` (빌드 단축키) 를 눌러서 2개의 npm script 가 잘 돌아가는지 확인
 
 <img width="482" alt="image" src="https://user-images.githubusercontent.com/56115607/205822641-e7789b03-4657-417d-9b6e-40d88fa9911d.png">
